@@ -22,7 +22,8 @@ app.config.from_pyfile('flask.cfg')
 db = SQLAlchemy(app)
 
 # blueprints
-from project.recipes.views import recipes_blueprintfrom project.users.views import users_blueprint
+from project.recipes.views import recipes_blueprint
+from project.users.views import users_blueprint
 
 # register the blueprints
 app.register_blueprint(users_blueprint)
