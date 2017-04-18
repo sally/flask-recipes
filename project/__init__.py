@@ -13,6 +13,7 @@ After using Blueprint to structure our project, we need to also add the registra
 '''
 # imports
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 # config
 app = Flask(__name__, instance_relative_config=True)
