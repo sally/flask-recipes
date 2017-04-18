@@ -15,9 +15,10 @@ After using Blueprint to structure our project, we need to also add the registra
 from flask import Flask
 
 # config
-app = Flask(__name__)
- # , instance_relative_config=True)
-# app.config.from_pyfile('flask.cfg')
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_pyfile('flask.cfg')
+
+db = SQLAlchemy(app)
 
 # blueprints
 from project.recipes.views import recipes_blueprintfrom project.users.views import users_blueprint
