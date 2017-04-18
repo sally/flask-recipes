@@ -12,23 +12,35 @@
   </head>
   <body>
 
-<h1>Welcome to Sally's Recipe App!</h1>
+    <h1>Welcome to Sally's Recipe App!</h1>
+
+    This site describes my favorite recipes!
+
+    <h2>Breakfast Recipes</h2>
 
 
-
-This site describes my favorite recipes!
-
-
-<h2>Breakfast Recipes</h2>
+    <h2>Lunch Recipes</h2>
 
 
-<h2>Lunch Recipes</h2>
+    <h2>Dinner Recipes</h2>
 
 
-<h2>Dinner Recipes</h2>
+    <h2>Dessert Recipes</h2>
 
+    <h3>All Recipes</h3>
 
-<h2>Dessert Recipes</h2>
+    <table style="width:100%">
+      <tr>
+        <td>Title</td>
+        <td>Description</td>
+        {% for recipe in recipes %}
+        <tr>
+          <td>{{ recipe.recipe_title }}</td>
+          <td>{{ recipe.recipe_description }}</td>
+        </tr>
+        {% endfor %}
+      </tr>
+    </table>
 
   </body>
 </html>
