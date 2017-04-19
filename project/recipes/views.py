@@ -6,7 +6,15 @@ from project.models import Recipe
 from forms import AddRecipeForm, flash_errors
 
 # config
-recipes_blueprint = Blueprint('recipes', __name__, template_folder='templates')
+'''
+When there used to be separate template folders for each resource, we used to have the following.
+'''
+# recipes_blueprint = Blueprint('recipes', __name__, template_folder='templates')
+'''
+However, after we move all templates to project/templates, we have:
+'''
+recipes_blueprint = Blueprint('recipes', __name__)
+
 
 # routes
 @recipes_blueprint.route('/')
