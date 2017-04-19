@@ -27,26 +27,32 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String, unique=True, nullable=False)
-    _password = db.Column(db.(Binary(60)), nullable=False)
+    _password = db.Column(db.Binary(60), nullable=False)
     authenticated = db.Column(db.Boolean, default=False)
 
     def __init__(self, email, password_plaintext):
         self.email = email
-        self.password_plaintext = password_plaintext
+        self.password = password_plaintext
         self.authenticated = False
+
+    '''
+    Hybrid properties allow you to treat calculations (e.g. first_name + last_name like any other database column.
+
+    See
+    https://github.com/flask-admin/flask-admin/tree/master/examples/sqla-hybrid_property
+    http://docs.sqlalchemy.org/en/latest/orm/extensions/hybrid.html#working-with-relationships
+    '''
+    @hybrid_property
+    def password(self):
+        return self._password
 
     @password.setter
     def set_password(self, plaintext_password):
         self._password = bcrypt.generate_password_hash(plaintext_password)
-
-    @hybrid_property
-    def password(self)
-    return self._password
 
     @hybrid_method
     def is_correct_password(self, plaintext_password):
         return bcrypt.check_password_hash(self.password, self.plaintext_password)
 
     def __repr__(self):
-        return "
-        <User {0}".format(self.name)
+        return "<User {0}".format(self.name)
