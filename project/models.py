@@ -3,7 +3,8 @@ Define all our models in here for our Flask app.
 Need to import the 'db' object that we created in ../project/__init__.py
 '''
 
-from project import db
+from project import db, bcrypt
+from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 
 class Recipe(db.Model):
 

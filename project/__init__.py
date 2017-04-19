@@ -14,12 +14,15 @@ After using Blueprint to structure our project, we need to also add the registra
 # imports
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
 
 # config
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_pyfile('flask.cfg')
 
 db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 
 # blueprints
 from project.recipes.views import recipes_blueprint
