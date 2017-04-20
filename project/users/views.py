@@ -36,8 +36,8 @@ def register():
                 db.session.commit()
                 flash('Thanks for registering!', 'success')
                 return redirect(url_for('recipes.index'))
-            except IntegrityError:
+            except exc.IntegrityError:
                 db.session.rollback()
                 flash_errors(form)
-                flash('ERROR! Email ({}) already exists.'.format(form.email.data), 'error')
+                flash('Error - Email ({}) already exists.'.format(form.email.data), 'error')
     return render_template('register.html', form=form)
