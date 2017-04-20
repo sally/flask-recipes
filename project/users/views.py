@@ -1,8 +1,13 @@
 # imports
 from flask import render_template, Blueprint, flash, request, redirect, url_for
 from project import db
-from project.models import Recipe
+from project.models import User
 from forms import RegisterForm, flash_errors
+'''
+The following imports below are to catch IntegrityErrors
+'''
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import exc
 
 # config
 '''
